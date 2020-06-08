@@ -15,11 +15,23 @@ computeGap=(option,premium,spotPrice)=>{
     }
 }
 
+toggleVisibility=(row,sellPrice)=>{
+    if(sellPrice>0){
+        row.style.visibility='visible'
+        return true
+    } 
+    row.style.visibility='hidden'
+    return false
+}
+
 updateGaps=(options,spotPrice)=>{
     options.forEach(option => {
         row=document.getElementById(option.rowId)
-        buyPrice=numStringToFloat(row.children[2].innerText)
         sellPrice=numStringToFloat(row.children[3].innerText)
+        if(!toggleVisibility(row,sellPrice)){
+            return 
+        }
+        buyPrice=numStringToFloat(row.children[2].innerText)
         buyGapTd=row.children[row.children.length-2]
         sellGapTd=row.children[row.children.length-1]
         buyGapTd.innerText=computeGap(option,buyPrice,spotPrice).toFixed(2)
