@@ -17,10 +17,10 @@ computeGap=(option,premium,spotPrice)=>{
 
 toggleVisibility=(row,sellPrice)=>{
     if(sellPrice>0){
-        row.style.visibility='visible'
+        row.style.display='table-row'
         return true
     } 
-    row.style.visibility='hidden'
+    row.style.display='none'
     return false
 }
 
