@@ -9,7 +9,7 @@
       {
         "matches": ["*://*.invertironline.com/titulo/cotizacion/BCBA/GGAL/GRUPO-FINANCIERO-GALICIA/opciones"],
         "css":["./css/styles.css"],
-        "js": ["./js/util.js","./js/spotPrice.js","./js/options.js","./js/table.js","./js/main.js"]
+        "js": ["./js/util.js","./js/spotPrice.js","./js/options.js","./js/table.js","./js/update.js","./js/main.js"]
       }
     ]
   
