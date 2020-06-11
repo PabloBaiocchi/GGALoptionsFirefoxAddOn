@@ -10,8 +10,7 @@ addColumn=(colName,table)=>{
 
     addColumnName(colName,thead)
 
-    rows=tbody.children
-    rows=slice(rows,1)
+    rows=getRows(tbody)
     rows.forEach((row)=>{
         td=document.createElement('td')
         row.appendChild(td)

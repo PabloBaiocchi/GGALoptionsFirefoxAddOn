@@ -7,7 +7,7 @@ formatType=(char)=>{
     }
 }
 
-getOption=(optionName)=>{
+disectName=(optionName)=>{
     type=formatType(optionName[3])
     strikePrice=parseFloat(optionName.substring(4,optionName.length-2))
     month=optionName.substring(optionName.length-2)
@@ -19,15 +19,35 @@ getOption=(optionName)=>{
     }
 }
 
+getOption=(row)=>{
+    tds=row.children
+    option=disectName(tds[0].innerText)
+    option.buyQuantity=parseInt(tds[1].innerText)
+    option.buyPrice=numStringToFloat(tds[2].innerText)
+    option.sellPrice=numStringToFloat(tds[3].innerText)
+    option.sellQuantity=parseInt(tds[4].innerText)
+    option.lastOperated=numStringToFloat(tds[5].innerText)   
+    option.open=numStringToFloat(tds[7].innerText)
+    option.max=numStringToFloat(tds[8].innerText)
+    option.min=numStringToFloat(tds[9].innerText)
+    option.lastClose=numStringToFloat(tds[10].innerText)
+    option.row=row
+    return option
+}
+
 getOptions=(table)=>{
     tbody=table.getElementsByTagName('tbody')[0]
-    rows=tbody.children
-    rows=slice(rows,1)
+    rows=getRows(tbody)
 
     return rows.map((row)=>{
-        option=getOption(row.children[0].innerText)
-        option.rowId=option.option
-        row.setAttribute('id',option.rowId)
-        return option
+        return getOption(row)
+    })
+}
+
+hideUnavailable=(options)=>{
+    options.forEach((option)=>{
+        if(option.sellPrice==0){
+            option.row.style.display='none'
+        }   
     })
 }

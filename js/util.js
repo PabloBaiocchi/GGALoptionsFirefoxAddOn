@@ -4,10 +4,8 @@ numStringToFloat=(numString)=>{
     return parseFloat(numString)
 }
 
-slice=(collection,startIndex)=>{
-    output=[]
-    for(let i=startIndex;i<collection.length;++i){
-        output.push(collection[i])
-    }
-    return output
+getRows=(tbody)=>{
+    return Array.from(tbody.children).filter((element)=>{
+        return element.nodeName=='TR'
+    })
 }
