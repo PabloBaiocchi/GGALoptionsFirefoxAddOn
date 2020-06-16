@@ -51,3 +51,11 @@ hideUnavailable=(options)=>{
         }   
     })
 }
+
+hideMonth=(month)=>{
+    options.forEach((option)=>{
+        if(option.month==month){
+            option.row.style.display='none'
+        }   
+    })
+}

@@ -11,6 +11,7 @@ window.addEventListener('load',()=>{
     puts=getOptions(putTable)
     options=calls.concat(puts)
     hideUnavailable(options)
+    hideMonth('JU')
 
     spotPrice=getSpotPrice()
 
